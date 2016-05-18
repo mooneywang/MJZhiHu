@@ -1,0 +1,16 @@
+//
+//  MJZhiHu.pch
+//  MJZhiHu
+//
+//  Created by Mengjie.Wang on 16/5/18.
+//  Copyright © 2016年 Mooney.Wang. All rights reserved.
+//
+
+#ifndef MJZhiHu_pch
+#define MJZhiHu_pch
+
+#define MJUserDefaults [NSUserDefaults standardUserDefaults]
+
+#define LAUNCH_IMAGE_URL @"http://news-at.zhihu.com/api/4/start-image/720*1184"
+
+#endif /* MJZhiHu_pch */
