@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class MJHomeController;
+
 @interface MJLeftDrawerController : UIViewController
+
+@property (nonatomic, strong) MJHomeController *homeController;
 
 @end

@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6EBEA04737740C9A03E1A5E0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F99DA8DC08F78505384D2F4D /* libPods.a */; };
+		CC38D7A61CF3FC3000546556 /* MJDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC38D7A51CF3FC3000546556 /* MJDrawerController.m */; };
 		CC3D2AEB1CEC38DD00F9085F /* MJLaunchController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3D2AE91CEC38DD00F9085F /* MJLaunchController.m */; };
 		CC3D2AEC1CEC38DD00F9085F /* MJLaunchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC3D2AEA1CEC38DD00F9085F /* MJLaunchController.xib */; };
-		CC3D2AF81CEC4A4A00F9085F /* MJMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3D2AF71CEC4A4A00F9085F /* MJMainViewController.m */; };
 		CC3D2B031CEC544600F9085F /* MJHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3D2B021CEC544600F9085F /* MJHomeController.m */; };
 		CC3D2B071CEC546000F9085F /* MJLeftDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3D2B051CEC546000F9085F /* MJLeftDrawerController.m */; };
 		CC3D2B081CEC546000F9085F /* MJLeftDrawerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC3D2B061CEC546000F9085F /* MJLeftDrawerController.xib */; };
+		CC543E7B1CED697000EA5F6E /* MJNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC543E7A1CED697000EA5F6E /* MJNavigationController.m */; };
 		CCA8BEF51CEC16030099AA75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA8BEF41CEC16030099AA75 /* main.m */; };
 		CCA8BEF81CEC16030099AA75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA8BEF71CEC16030099AA75 /* AppDelegate.m */; };
 		CCA8BF001CEC16030099AA75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCA8BEFF1CEC16030099AA75 /* Assets.xcassets */; };
@@ -41,17 +42,19 @@
 
 /* Begin PBXFileReference section */
 		1F085EC7373D39AB0817E399 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CC38D7A41CF3FC3000546556 /* MJDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDrawerController.h; sourceTree = "<group>"; };
+		CC38D7A51CF3FC3000546556 /* MJDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDrawerController.m; sourceTree = "<group>"; };
 		CC3D2AE81CEC38DD00F9085F /* MJLaunchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJLaunchController.h; sourceTree = "<group>"; };
 		CC3D2AE91CEC38DD00F9085F /* MJLaunchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJLaunchController.m; sourceTree = "<group>"; };
 		CC3D2AEA1CEC38DD00F9085F /* MJLaunchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MJLaunchController.xib; sourceTree = "<group>"; };
 		CC3D2AED1CEC3DCD00F9085F /* MJZhiHu.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJZhiHu.pch; sourceTree = "<group>"; };
-		CC3D2AF61CEC4A4A00F9085F /* MJMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJMainViewController.h; sourceTree = "<group>"; };
-		CC3D2AF71CEC4A4A00F9085F /* MJMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJMainViewController.m; sourceTree = "<group>"; };
 		CC3D2B011CEC544600F9085F /* MJHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJHomeController.h; sourceTree = "<group>"; };
 		CC3D2B021CEC544600F9085F /* MJHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJHomeController.m; sourceTree = "<group>"; };
 		CC3D2B041CEC546000F9085F /* MJLeftDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJLeftDrawerController.h; sourceTree = "<group>"; };
 		CC3D2B051CEC546000F9085F /* MJLeftDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJLeftDrawerController.m; sourceTree = "<group>"; };
 		CC3D2B061CEC546000F9085F /* MJLeftDrawerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MJLeftDrawerController.xib; sourceTree = "<group>"; };
+		CC543E791CED697000EA5F6E /* MJNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJNavigationController.h; sourceTree = "<group>"; };
+		CC543E7A1CED697000EA5F6E /* MJNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJNavigationController.m; sourceTree = "<group>"; };
 		CCA8BEF01CEC16020099AA75 /* MJZhiHu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MJZhiHu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA8BEF41CEC16030099AA75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CCA8BEF61CEC16030099AA75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -156,8 +159,10 @@
 		CC3D2AF31CEC4A3B00F9085F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CC3D2AF61CEC4A4A00F9085F /* MJMainViewController.h */,
-				CC3D2AF71CEC4A4A00F9085F /* MJMainViewController.m */,
+				CC38D7A41CF3FC3000546556 /* MJDrawerController.h */,
+				CC38D7A51CF3FC3000546556 /* MJDrawerController.m */,
+				CC543E791CED697000EA5F6E /* MJNavigationController.h */,
+				CC543E7A1CED697000EA5F6E /* MJNavigationController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -513,10 +518,11 @@
 			files = (
 				CC3D2B071CEC546000F9085F /* MJLeftDrawerController.m in Sources */,
 				CC3D2B031CEC544600F9085F /* MJHomeController.m in Sources */,
-				CC3D2AF81CEC4A4A00F9085F /* MJMainViewController.m in Sources */,
 				CCA8BEF81CEC16030099AA75 /* AppDelegate.m in Sources */,
 				CCA8BEF51CEC16030099AA75 /* main.m in Sources */,
+				CC543E7B1CED697000EA5F6E /* MJNavigationController.m in Sources */,
 				CC3D2AEB1CEC38DD00F9085F /* MJLaunchController.m in Sources */,
+				CC38D7A61CF3FC3000546556 /* MJDrawerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

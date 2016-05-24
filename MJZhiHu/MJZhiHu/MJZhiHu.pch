@@ -9,7 +9,14 @@
 #ifndef MJZhiHu_pch
 #define MJZhiHu_pch
 
-#define MJUserDefaults [NSUserDefaults standardUserDefaults]
+#define kUserDefaults          [NSUserDefaults standardUserDefaults]
+#define kNotificationCenter    [NSNotificationCenter defaultCenter]
+#define kScreenW               [[UIScreen mainScreen] bounds].size.width
+#define kScreenH               [[UIScreen mainScreen] bounds].size.height
+
+#define kOpenLeftDrawer         @"kOpenLeftDrawer"
+#define kCloseLeftDrawer        @"kCloseLeftDrawer"
+#define kToggleLeftDrawer       @"kToggleLeftDrawer"
 
 #define LAUNCH_IMAGE_URL @"http://news-at.zhihu.com/api/4/start-image/720*1184"
 
