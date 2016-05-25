@@ -22,6 +22,9 @@
 		CCA8BF031CEC16030099AA75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCA8BF011CEC16030099AA75 /* LaunchScreen.storyboard */; };
 		CCA8BF0E1CEC16030099AA75 /* MJZhiHuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA8BF0D1CEC16030099AA75 /* MJZhiHuTests.m */; };
 		CCA8BF191CEC16030099AA75 /* MJZhiHuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA8BF181CEC16030099AA75 /* MJZhiHuUITests.m */; };
+		CCE50C5C1CF576C300EE545D /* MJExtensionConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE50C5B1CF576C300EE545D /* MJExtensionConfig.m */; };
+		CCE50C5F1CF5A87D00EE545D /* MJTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE50C5E1CF5A87D00EE545D /* MJTopicCell.m */; };
+		CCEBA91C1CF56BD100D72DDE /* MJTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEBA91B1CF56BD100D72DDE /* MJTopic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +74,12 @@
 		CCA8BF141CEC16030099AA75 /* MJZhiHuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MJZhiHuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA8BF181CEC16030099AA75 /* MJZhiHuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJZhiHuUITests.m; sourceTree = "<group>"; };
 		CCA8BF1A1CEC16030099AA75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCE50C5A1CF576C300EE545D /* MJExtensionConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConfig.h; sourceTree = "<group>"; };
+		CCE50C5B1CF576C300EE545D /* MJExtensionConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJExtensionConfig.m; sourceTree = "<group>"; };
+		CCE50C5D1CF5A87D00EE545D /* MJTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJTopicCell.h; sourceTree = "<group>"; };
+		CCE50C5E1CF5A87D00EE545D /* MJTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJTopicCell.m; sourceTree = "<group>"; };
+		CCEBA91A1CF56BD100D72DDE /* MJTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJTopic.h; sourceTree = "<group>"; };
+		CCEBA91B1CF56BD100D72DDE /* MJTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJTopic.m; sourceTree = "<group>"; };
 		E99D1D97CA9C330EE7B94BBB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F99DA8DC08F78505384D2F4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -175,6 +184,8 @@
 		CC3D2AF41CEC4A3B00F9085F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CCEBA91A1CF56BD100D72DDE /* MJTopic.h */,
+				CCEBA91B1CF56BD100D72DDE /* MJTopic.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +227,8 @@
 		CC3D2AFC1CEC505000F9085F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CCE50C5D1CF5A87D00EE545D /* MJTopicCell.h */,
+				CCE50C5E1CF5A87D00EE545D /* MJTopicCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +307,8 @@
 			children = (
 				CCA8BEF41CEC16030099AA75 /* main.m */,
 				CC3D2AED1CEC3DCD00F9085F /* MJZhiHu.pch */,
+				CCE50C5A1CF576C300EE545D /* MJExtensionConfig.h */,
+				CCE50C5B1CF576C300EE545D /* MJExtensionConfig.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -525,9 +540,12 @@
 				CC3D2B031CEC544600F9085F /* MJHomeController.m in Sources */,
 				CC8C71E51CF43F2C00A42B03 /* MJAccount.m in Sources */,
 				CCA8BEF81CEC16030099AA75 /* AppDelegate.m in Sources */,
+				CCE50C5F1CF5A87D00EE545D /* MJTopicCell.m in Sources */,
 				CCA8BEF51CEC16030099AA75 /* main.m in Sources */,
 				CC543E7B1CED697000EA5F6E /* MJNavigationController.m in Sources */,
 				CC3D2AEB1CEC38DD00F9085F /* MJLaunchController.m in Sources */,
+				CCEBA91C1CF56BD100D72DDE /* MJTopic.m in Sources */,
+				CCE50C5C1CF576C300EE545D /* MJExtensionConfig.m in Sources */,
 				CC38D7A61CF3FC3000546556 /* MJDrawerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

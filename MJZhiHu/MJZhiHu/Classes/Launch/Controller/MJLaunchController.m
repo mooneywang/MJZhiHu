@@ -34,7 +34,7 @@
     }
     // 就算之前已经保存了url还要再获取一遍，保持最新
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:LAUNCH_IMAGE_URL parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager GET:GET_LAUNCH_IMAGE_URL parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
         NSLog(@"downloadProgress:%@",downloadProgress);
         

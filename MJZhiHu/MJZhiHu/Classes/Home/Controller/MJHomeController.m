@@ -7,6 +7,7 @@
 //
 
 #import "MJHomeController.h"
+#import "MJDrawerController.h"
 
 #define kNavBarHeight          (56)
 #define kLeftButtonWidth       (kNavBarHeight - 20)
@@ -21,31 +22,6 @@
 @end
 
 @implementation MJHomeController
-
-#pragma mark - getter & setter
-
-- (UIView *)headerView {
-    if (!_headerView) {
-        UIView *headerView = [[UIView alloc] init];
-        headerView.frame = CGRectMake(0, 0, kScreenW, kNavBarHeight);
-        headerView.backgroundColor = [UIColor colorWithRed:23/255.0 green:144/255.0 blue:211/255.0 alpha:1];
-        [self.view addSubview:headerView];
-        _headerView = headerView;
-    }
-    return _headerView;
-}
-
-- (UIButton *)leftButton {
-    if (!_leftButton) {
-        UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [leftButton setImage:[UIImage imageNamed:@"Home_Icon"] forState:UIControlStateNormal];
-        leftButton.frame = CGRectMake(10, 20, kLeftButtonWidth, kLeftButtonHeight);
-        [leftButton addTarget:self action:@selector(didClickLeftButton:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:leftButton];
-        _leftButton = leftButton;
-    }
-    return _leftButton;
-}
 
 #pragma mark - life cycle
 
@@ -74,6 +50,38 @@
 
 - (void)setupTableView {
     
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    MJDrawerController *drawerController = (MJDrawerController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    if (drawerController.isOpen) {
+        [kNotificationCenter postNotificationName:kToggleLeftDrawer object:nil];
+    }
+}
+
+#pragma mark - getter & setter
+
+- (UIView *)headerView {
+    if (!_headerView) {
+        UIView *headerView = [[UIView alloc] init];
+        headerView.frame = CGRectMake(0, 0, kScreenW, kNavBarHeight);
+        headerView.backgroundColor = MJColor(23, 144, 211, 1);
+        [self.view addSubview:headerView];
+        _headerView = headerView;
+    }
+    return _headerView;
+}
+
+- (UIButton *)leftButton {
+    if (!_leftButton) {
+        UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [leftButton setImage:[UIImage imageNamed:@"Home_Icon"] forState:UIControlStateNormal];
+        leftButton.frame = CGRectMake(10, 20, kLeftButtonWidth, kLeftButtonHeight);
+        [leftButton addTarget:self action:@selector(didClickLeftButton:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:leftButton];
+        _leftButton = leftButton;
+    }
+    return _leftButton;
 }
 
 @end
