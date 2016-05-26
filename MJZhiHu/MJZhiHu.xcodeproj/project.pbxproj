@@ -25,6 +25,7 @@
 		CCE50C5C1CF576C300EE545D /* MJExtensionConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE50C5B1CF576C300EE545D /* MJExtensionConfig.m */; };
 		CCE50C5F1CF5A87D00EE545D /* MJTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE50C5E1CF5A87D00EE545D /* MJTopicCell.m */; };
 		CCEBA91C1CF56BD100D72DDE /* MJTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEBA91B1CF56BD100D72DDE /* MJTopic.m */; };
+		CCF26C491CF69E82001774F7 /* MJDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF26C481CF69E82001774F7 /* MJDBManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		CCE50C5E1CF5A87D00EE545D /* MJTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJTopicCell.m; sourceTree = "<group>"; };
 		CCEBA91A1CF56BD100D72DDE /* MJTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJTopic.h; sourceTree = "<group>"; };
 		CCEBA91B1CF56BD100D72DDE /* MJTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJTopic.m; sourceTree = "<group>"; };
+		CCF26C471CF69E82001774F7 /* MJDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDBManager.h; sourceTree = "<group>"; };
+		CCF26C481CF69E82001774F7 /* MJDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDBManager.m; sourceTree = "<group>"; };
 		E99D1D97CA9C330EE7B94BBB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F99DA8DC08F78505384D2F4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,6 +159,8 @@
 			children = (
 				CC8C71E31CF43F2C00A42B03 /* MJAccount.h */,
 				CC8C71E41CF43F2C00A42B03 /* MJAccount.m */,
+				CCF26C471CF69E82001774F7 /* MJDBManager.h */,
+				CCF26C481CF69E82001774F7 /* MJDBManager.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF26C491CF69E82001774F7 /* MJDBManager.m in Sources */,
 				CC3D2B071CEC546000F9085F /* MJLeftDrawerController.m in Sources */,
 				CC3D2B031CEC544600F9085F /* MJHomeController.m in Sources */,
 				CC8C71E51CF43F2C00A42B03 /* MJAccount.m in Sources */,

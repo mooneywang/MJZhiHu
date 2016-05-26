@@ -20,7 +20,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -36,12 +35,7 @@
         cell = [[MJTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:topicCellReuseId];
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.backgroundColor = kLeftDrawerThemeColor;
-        UIButton *accessoryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        accessoryBtn.width = 15;
-        accessoryBtn.height = 18;
-        [accessoryBtn setBackgroundImage:[UIImage imageNamed:@"Menu_Enter"] forState:UIControlStateDisabled];
-        [accessoryBtn setBackgroundImage:[UIImage imageNamed:@"Menu_Follow"] forState:UIControlStateNormal];
-        cell.accessoryView = accessoryBtn;
+        cell.accessoryView = cell.accessoryBtn;
     }
     return cell;
 }
@@ -51,13 +45,26 @@
     self.textLabel.text = topic.name;
     self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
     self.selectedBackgroundView.backgroundColor = MJColor(21, 26, 31, 1);
+    self.accessoryBtn.enabled = !topic.isFollowed;
 }
 
 - (UIButton *)accessoryBtn {
     if (!_accessoryBtn) {
-        
+        _accessoryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _accessoryBtn.width = 15;
+        _accessoryBtn.height = 18;
+        [_accessoryBtn addTarget:self action:@selector(accessoryBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [_accessoryBtn setBackgroundImage:[UIImage imageNamed:@"Menu_Enter"] forState:UIControlStateDisabled];
+        [_accessoryBtn setBackgroundImage:[UIImage imageNamed:@"Menu_Follow"] forState:UIControlStateNormal];
     }
     return _accessoryBtn;
+}
+
+- (void)accessoryBtnClick {
+    NSLog(@"%s",__func__);
+    if ([self.delegate respondsToSelector:@selector(topicCellDidClickAccessoryButton:)]) {
+        [self.delegate topicCellDidClickAccessoryButton:self];
+    }
 }
 
 @end

@@ -9,10 +9,20 @@
 #import <UIKit/UIKit.h>
 
 @class MJTopic;
+@class MJTopicCell;
+
+@protocol MJTopicCellDelegate <NSObject>
+
+@optional
+- (void)topicCellDidClickAccessoryButton:(MJTopicCell *)topicCell;
+
+@end
 
 @interface MJTopicCell : UITableViewCell
 
 @property (nonatomic, strong) MJTopic *topic;
+
+@property (nonatomic, weak) id<MJTopicCellDelegate> delegate;
 
 + (instancetype)topicCellWithTableView:(UITableView *)tableView;
 

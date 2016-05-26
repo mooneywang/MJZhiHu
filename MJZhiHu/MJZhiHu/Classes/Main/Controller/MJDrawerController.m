@@ -17,21 +17,21 @@
 #pragma mark - life cycle
 
 - (instancetype)init {
-    if ([super init]) {
+    if (self = [super init]) {
         [self configDefault];
     }
     return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if ([super initWithCoder:aDecoder]) {
+    if (self = [super initWithCoder:aDecoder]) {
         [self configDefault];
     }
     return self;
 }
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if ([super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         [self configDefault];
     }
     return self;

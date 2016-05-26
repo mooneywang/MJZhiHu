@@ -11,6 +11,7 @@
 #import "MJTopicCell.h"
 #import <AFHTTPSessionManager.h>
 #import <MJExtension.h>
+#import "MJDBManager.h"
 
 @interface MJLeftDrawerController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -55,17 +56,26 @@
 - (NSMutableArray *)topics {
     if (!_topics) {
         _topics = [NSMutableArray array];
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [manager GET:GET_TOPIC_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            _topics = [MJTopic mj_objectArrayWithKeyValuesArray:responseObject[@"others"]];
-            MJTopic *topic = [[MJTopic alloc] init];
-            topic.name = @"首页";
-            topic.isFollowed = YES;
-            [_topics insertObject:topic atIndex:0];
-            [self.tableView reloadData];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            
-        }];
+        // 先从数据库取
+        MJDBManager *dbManager = [MJDBManager sharedManager];
+        [_topics addObjectsFromArray:[dbManager searchAllTopics]];
+        if (_topics.count == 0) {
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            [manager GET:GET_TOPIC_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                _topics = [MJTopic mj_objectArrayWithKeyValuesArray:responseObject[@"others"]];
+                MJTopic *topic = [[MJTopic alloc] init];
+                topic.name = @"首页";
+                topic.isFollowed = YES;
+                [_topics insertObject:topic atIndex:0];
+                [self.tableView reloadData];
+                // 将topics存入数据库
+                for (MJTopic *topic in _topics) {
+                    [dbManager insertIntoTopics:topic];
+                }
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                
+            }];
+        }
     }
     return _topics;
 }

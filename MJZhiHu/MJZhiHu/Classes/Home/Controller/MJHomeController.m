@@ -8,6 +8,7 @@
 
 #import "MJHomeController.h"
 #import "MJDrawerController.h"
+#import "MJDBManager.h"
 
 #define kNavBarHeight          (56)
 #define kLeftButtonWidth       (kNavBarHeight - 20)
@@ -65,7 +66,7 @@
     if (!_headerView) {
         UIView *headerView = [[UIView alloc] init];
         headerView.frame = CGRectMake(0, 0, kScreenW, kNavBarHeight);
-        headerView.backgroundColor = MJColor(23, 144, 211, 1);
+        headerView.backgroundColor = kNavBarThemeColor;
         [self.view addSubview:headerView];
         _headerView = headerView;
     }

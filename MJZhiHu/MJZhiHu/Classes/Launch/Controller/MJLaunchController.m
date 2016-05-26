@@ -46,23 +46,32 @@
         [kUserDefaults setValue:launchImageUrl forKey:LAUNCH_IMAGE_URL_KEY];
         [self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:launchImageUrl]];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            // 2.0秒之后执行此处代码
-            [UIView animateWithDuration:1.5 animations:^{
-                // 放大
-                self.backgroundImageView.transform = CGAffineTransformMakeScale(1.3, 1.3);
-                // 透明
-                self.backgroundImageView.alpha = 0;
-            } completion:^(BOOL finished) {
-                [UIApplication sharedApplication].keyWindow.rootViewController = self.drawerController;
-            }];
-        });
+        [self changeRootViewController];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
-        NSLog(@"%@",error.localizedDescription);
+        NSLog(@"error:%@",error.localizedDescription);
+        [self changeRootViewController];
         
     }];
+}
+
+- (void)dealloc {
+    NSLog(@"MJLaunchController 被销毁了");
+}
+
+- (void)changeRootViewController {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 2.0秒之后执行此处代码
+        [UIView animateWithDuration:1.5 animations:^{
+            // 放大
+            self.backgroundImageView.transform = CGAffineTransformMakeScale(1.3, 1.3);
+            // 透明
+            self.backgroundImageView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [UIApplication sharedApplication].keyWindow.rootViewController = self.drawerController;
+        }];
+    });
 }
 
 - (MJDrawerController *)drawerController {
@@ -78,5 +87,7 @@
     }
     return _drawerController;
 }
+
+
 
 @end
