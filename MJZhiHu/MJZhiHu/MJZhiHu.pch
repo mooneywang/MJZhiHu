@@ -13,6 +13,8 @@
 #define kNotificationCenter    [NSNotificationCenter defaultCenter]
 #define kScreenW               [[UIScreen mainScreen] bounds].size.width
 #define kScreenH               [[UIScreen mainScreen] bounds].size.height
+#define kStatusBarH            (20)
+#define kTopBarHeight          (56)
 
 #define kOpenLeftDrawer         @"kOpenLeftDrawer"
 #define kCloseLeftDrawer        @"kCloseLeftDrawer"
