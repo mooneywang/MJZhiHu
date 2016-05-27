@@ -16,6 +16,9 @@
 		CC3D2B081CEC546000F9085F /* MJLeftDrawerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC3D2B061CEC546000F9085F /* MJLeftDrawerController.xib */; };
 		CC543E7B1CED697000EA5F6E /* MJNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC543E7A1CED697000EA5F6E /* MJNavigationController.m */; };
 		CC8C71E51CF43F2C00A42B03 /* MJAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C71E41CF43F2C00A42B03 /* MJAccount.m */; };
+		CCA34DA11CF7F72D00B65E48 /* MJPicturesView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA34DA01CF7F72D00B65E48 /* MJPicturesView.m */; };
+		CCA34DA41CF7F8BC00B65E48 /* MJStory.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA34DA31CF7F8BC00B65E48 /* MJStory.m */; };
+		CCA34DA71CF8199400B65E48 /* MJRefreshCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA34DA61CF8199400B65E48 /* MJRefreshCycle.m */; };
 		CCA8BEF51CEC16030099AA75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA8BEF41CEC16030099AA75 /* main.m */; };
 		CCA8BEF81CEC16030099AA75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA8BEF71CEC16030099AA75 /* AppDelegate.m */; };
 		CCA8BF001CEC16030099AA75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCA8BEFF1CEC16030099AA75 /* Assets.xcassets */; };
@@ -62,6 +65,12 @@
 		CC543E7A1CED697000EA5F6E /* MJNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJNavigationController.m; sourceTree = "<group>"; };
 		CC8C71E31CF43F2C00A42B03 /* MJAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAccount.h; sourceTree = "<group>"; };
 		CC8C71E41CF43F2C00A42B03 /* MJAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAccount.m; sourceTree = "<group>"; };
+		CCA34D9F1CF7F72D00B65E48 /* MJPicturesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPicturesView.h; sourceTree = "<group>"; };
+		CCA34DA01CF7F72D00B65E48 /* MJPicturesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPicturesView.m; sourceTree = "<group>"; };
+		CCA34DA21CF7F8BC00B65E48 /* MJStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJStory.h; sourceTree = "<group>"; };
+		CCA34DA31CF7F8BC00B65E48 /* MJStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJStory.m; sourceTree = "<group>"; };
+		CCA34DA51CF8199400B65E48 /* MJRefreshCycle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshCycle.h; sourceTree = "<group>"; };
+		CCA34DA61CF8199400B65E48 /* MJRefreshCycle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshCycle.m; sourceTree = "<group>"; };
 		CCA8BEF01CEC16020099AA75 /* MJZhiHu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MJZhiHu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA8BEF41CEC16030099AA75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CCA8BEF61CEC16030099AA75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -260,6 +269,8 @@
 		CC3D2AFF1CEC505D00F9085F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CCA34DA21CF7F8BC00B65E48 /* MJStory.h */,
+				CCA34DA31CF7F8BC00B65E48 /* MJStory.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,6 +278,10 @@
 		CC3D2B001CEC505D00F9085F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CCA34D9F1CF7F72D00B65E48 /* MJPicturesView.h */,
+				CCA34DA01CF7F72D00B65E48 /* MJPicturesView.m */,
+				CCA34DA51CF8199400B65E48 /* MJRefreshCycle.h */,
+				CCA34DA61CF8199400B65E48 /* MJRefreshCycle.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -541,11 +556,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCA34DA41CF7F8BC00B65E48 /* MJStory.m in Sources */,
 				CCF26C491CF69E82001774F7 /* MJDBManager.m in Sources */,
 				CC3D2B071CEC546000F9085F /* MJLeftDrawerController.m in Sources */,
 				CC3D2B031CEC544600F9085F /* MJHomeController.m in Sources */,
 				CC8C71E51CF43F2C00A42B03 /* MJAccount.m in Sources */,
 				CCA8BEF81CEC16030099AA75 /* AppDelegate.m in Sources */,
+				CCA34DA11CF7F72D00B65E48 /* MJPicturesView.m in Sources */,
+				CCA34DA71CF8199400B65E48 /* MJRefreshCycle.m in Sources */,
 				CCE50C5F1CF5A87D00EE545D /* MJTopicCell.m in Sources */,
 				CCA8BEF51CEC16030099AA75 /* main.m in Sources */,
 				CC543E7B1CED697000EA5F6E /* MJNavigationController.m in Sources */,

@@ -10,11 +10,13 @@
 #import "MJDrawerController.h"
 #import "MJDBManager.h"
 #import <Masonry.h>
-#import <FrameAccessor.h>
+#import "MJRefreshCycle.h"
 
-#define kLeftButtonWidth       (kTopBarHeight - kStatusBarH)
-#define kLeftButtonHeight      (kLeftButtonWidth)
-#define kPicturesViewH         (220)
+#define kLeftButtonW       (kTopBarH - kStatusBarH)
+#define kLeftButtonH       (kLeftButtonW)
+#define kRefreshCycleW     (20)
+#define kRefreshCycleH     (kRefreshCycleW)
+#define kPicturesViewH     (220)
 
 @interface MJHomeController ()
 
@@ -22,6 +24,8 @@
 @property (nonatomic, weak) UIView *picturesView;
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) UIButton *leftButton;
+@property (nonatomic, weak) UILabel *titleLabel;
+@property (nonatomic, weak) MJRefreshCycle *refreshCycle;
 
 @end
 
@@ -37,6 +41,8 @@
     [self setupPicturesView];
     [self setupHeaderView];
     [self setupLeftButton];
+    [self setupTitleLabel];
+    [self setupRefreshCycle];
 }
 
 #pragma mark - private methods
@@ -80,7 +86,7 @@
 
 - (void)setupHeaderView {
     UIView *headerView = [[UIView alloc] init];
-    headerView.frame = CGRectMake(0, 0, kScreenW, kTopBarHeight);
+    headerView.frame = CGRectMake(0, 0, kScreenW, kTopBarH);
     headerView.backgroundColor = kNavBarThemeColor;
     headerView.alpha = 0;
     [self.view addSubview:headerView];
@@ -90,10 +96,37 @@
 - (void)setupLeftButton {
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setImage:[UIImage imageNamed:@"Home_Icon"] forState:UIControlStateNormal];
-    leftButton.frame = CGRectMake(10, 20, kLeftButtonWidth, kLeftButtonHeight);
+    leftButton.frame = CGRectMake(10, 20, kLeftButtonW, kLeftButtonH);
     [leftButton addTarget:self action:@selector(didClickLeftButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:leftButton];
     _leftButton = leftButton;
+}
+
+- (void)setupTitleLabel {
+    UILabel *titleLabel = [[UILabel alloc] init];
+    [self.view addSubview:titleLabel];
+    titleLabel.text = @"今日要闻";
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.font = [UIFont boldSystemFontOfSize:17];
+    [titleLabel sizeToFit];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.centerY.equalTo(self.leftButton.mas_centerY);
+    }];
+    _titleLabel = titleLabel;
+}
+
+- (void)setupRefreshCycle {
+    MJRefreshCycle *refreshCycle = [[MJRefreshCycle alloc] init];
+    refreshCycle.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:refreshCycle];
+    [refreshCycle mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.leftButton.mas_centerY);
+        make.width.equalTo(@(kRefreshCycleW));
+        make.height.equalTo(@(kRefreshCycleH));
+        make.right.equalTo(self.titleLabel.mas_left).offset(-5);
+    }];
+    _refreshCycle = refreshCycle;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -105,13 +138,14 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if (object == self.tableView && [keyPath isEqualToString:@"contentOffset"]) {
-        NSLog(@"object:%@",NSStringFromCGPoint(self.tableView.contentOffset) );
         CGFloat yOffset = self.tableView.contentOffset.y;
         [self.picturesView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo(@(kPicturesViewH - yOffset));
         }];
-        CGFloat alpha = 0;
-//        alpha = (kPicturesViewH - kTopBarHeight) - yOffset
+        // 改变导航条的透明度（0 ～ 1）
+        self.headerView.alpha = yOffset / (kPicturesViewH - kTopBarH);
+        // 改变MJRefreshCycle的radius(0 ~ 2PI)
+        self.refreshCycle.angle = ABS(yOffset)/(kTopBarH) * M_PI * 2;
     }
 }
 
