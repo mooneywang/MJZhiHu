@@ -8,14 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		6EBEA04737740C9A03E1A5E0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F99DA8DC08F78505384D2F4D /* libPods.a */; };
+		CC0194931CFD2E54007A5410 /* MJDailyStory.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0194921CFD2E54007A5410 /* MJDailyStory.m */; };
+		CC0194991CFD34EC007A5410 /* MJLatestStory.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0194981CFD34EC007A5410 /* MJLatestStory.m */; };
 		CC38D7A61CF3FC3000546556 /* MJDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC38D7A51CF3FC3000546556 /* MJDrawerController.m */; };
 		CC3D2AEB1CEC38DD00F9085F /* MJLaunchController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3D2AE91CEC38DD00F9085F /* MJLaunchController.m */; };
 		CC3D2AEC1CEC38DD00F9085F /* MJLaunchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC3D2AEA1CEC38DD00F9085F /* MJLaunchController.xib */; };
 		CC3D2B031CEC544600F9085F /* MJHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3D2B021CEC544600F9085F /* MJHomeController.m */; };
 		CC3D2B071CEC546000F9085F /* MJLeftDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3D2B051CEC546000F9085F /* MJLeftDrawerController.m */; };
 		CC3D2B081CEC546000F9085F /* MJLeftDrawerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC3D2B061CEC546000F9085F /* MJLeftDrawerController.xib */; };
+		CC530AB61CFC2E60004CA447 /* MJStoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC530AB51CFC2E60004CA447 /* MJStoryCell.xib */; };
 		CC543E7B1CED697000EA5F6E /* MJNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC543E7A1CED697000EA5F6E /* MJNavigationController.m */; };
+		CC7B8E0A1CFC06530024F749 /* MJStoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7B8E091CFC06530024F749 /* MJStoryCell.m */; };
 		CC8C71E51CF43F2C00A42B03 /* MJAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8C71E41CF43F2C00A42B03 /* MJAccount.m */; };
+		CC93C3811CFD906C0047FEA8 /* MJHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC93C3801CFD906C0047FEA8 /* MJHomeHeaderView.m */; };
 		CCA34DA11CF7F72D00B65E48 /* MJPicturesView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA34DA01CF7F72D00B65E48 /* MJPicturesView.m */; };
 		CCA34DA41CF7F8BC00B65E48 /* MJStory.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA34DA31CF7F8BC00B65E48 /* MJStory.m */; };
 		CCA34DA71CF8199400B65E48 /* MJRefreshCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA34DA61CF8199400B65E48 /* MJRefreshCycle.m */; };
@@ -50,6 +55,10 @@
 
 /* Begin PBXFileReference section */
 		1F085EC7373D39AB0817E399 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CC0194911CFD2E54007A5410 /* MJDailyStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDailyStory.h; sourceTree = "<group>"; };
+		CC0194921CFD2E54007A5410 /* MJDailyStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDailyStory.m; sourceTree = "<group>"; };
+		CC0194971CFD34EC007A5410 /* MJLatestStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJLatestStory.h; sourceTree = "<group>"; };
+		CC0194981CFD34EC007A5410 /* MJLatestStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJLatestStory.m; sourceTree = "<group>"; };
 		CC38D7A41CF3FC3000546556 /* MJDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDrawerController.h; sourceTree = "<group>"; };
 		CC38D7A51CF3FC3000546556 /* MJDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDrawerController.m; sourceTree = "<group>"; };
 		CC3D2AE81CEC38DD00F9085F /* MJLaunchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJLaunchController.h; sourceTree = "<group>"; };
@@ -61,10 +70,15 @@
 		CC3D2B041CEC546000F9085F /* MJLeftDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJLeftDrawerController.h; sourceTree = "<group>"; };
 		CC3D2B051CEC546000F9085F /* MJLeftDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJLeftDrawerController.m; sourceTree = "<group>"; };
 		CC3D2B061CEC546000F9085F /* MJLeftDrawerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MJLeftDrawerController.xib; sourceTree = "<group>"; };
+		CC530AB51CFC2E60004CA447 /* MJStoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MJStoryCell.xib; sourceTree = "<group>"; };
 		CC543E791CED697000EA5F6E /* MJNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJNavigationController.h; sourceTree = "<group>"; };
 		CC543E7A1CED697000EA5F6E /* MJNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJNavigationController.m; sourceTree = "<group>"; };
+		CC7B8E081CFC06530024F749 /* MJStoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJStoryCell.h; sourceTree = "<group>"; };
+		CC7B8E091CFC06530024F749 /* MJStoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJStoryCell.m; sourceTree = "<group>"; };
 		CC8C71E31CF43F2C00A42B03 /* MJAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAccount.h; sourceTree = "<group>"; };
 		CC8C71E41CF43F2C00A42B03 /* MJAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAccount.m; sourceTree = "<group>"; };
+		CC93C37F1CFD906C0047FEA8 /* MJHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJHomeHeaderView.h; sourceTree = "<group>"; };
+		CC93C3801CFD906C0047FEA8 /* MJHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJHomeHeaderView.m; sourceTree = "<group>"; };
 		CCA34D9F1CF7F72D00B65E48 /* MJPicturesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPicturesView.h; sourceTree = "<group>"; };
 		CCA34DA01CF7F72D00B65E48 /* MJPicturesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPicturesView.m; sourceTree = "<group>"; };
 		CCA34DA21CF7F8BC00B65E48 /* MJStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJStory.h; sourceTree = "<group>"; };
@@ -271,6 +285,10 @@
 			children = (
 				CCA34DA21CF7F8BC00B65E48 /* MJStory.h */,
 				CCA34DA31CF7F8BC00B65E48 /* MJStory.m */,
+				CC0194911CFD2E54007A5410 /* MJDailyStory.h */,
+				CC0194921CFD2E54007A5410 /* MJDailyStory.m */,
+				CC0194971CFD34EC007A5410 /* MJLatestStory.h */,
+				CC0194981CFD34EC007A5410 /* MJLatestStory.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,6 +300,11 @@
 				CCA34DA01CF7F72D00B65E48 /* MJPicturesView.m */,
 				CCA34DA51CF8199400B65E48 /* MJRefreshCycle.h */,
 				CCA34DA61CF8199400B65E48 /* MJRefreshCycle.m */,
+				CC7B8E081CFC06530024F749 /* MJStoryCell.h */,
+				CC7B8E091CFC06530024F749 /* MJStoryCell.m */,
+				CC530AB51CFC2E60004CA447 /* MJStoryCell.xib */,
+				CC93C37F1CFD906C0047FEA8 /* MJHomeHeaderView.h */,
+				CC93C3801CFD906C0047FEA8 /* MJHomeHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -483,6 +506,7 @@
 				CCA8BF031CEC16030099AA75 /* LaunchScreen.storyboard in Resources */,
 				CC3D2AEC1CEC38DD00F9085F /* MJLaunchController.xib in Resources */,
 				CC3D2B081CEC546000F9085F /* MJLeftDrawerController.xib in Resources */,
+				CC530AB61CFC2E60004CA447 /* MJStoryCell.xib in Resources */,
 				CCA8BF001CEC16030099AA75 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +580,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC7B8E0A1CFC06530024F749 /* MJStoryCell.m in Sources */,
 				CCA34DA41CF7F8BC00B65E48 /* MJStory.m in Sources */,
 				CCF26C491CF69E82001774F7 /* MJDBManager.m in Sources */,
 				CC3D2B071CEC546000F9085F /* MJLeftDrawerController.m in Sources */,
@@ -563,14 +588,17 @@
 				CC8C71E51CF43F2C00A42B03 /* MJAccount.m in Sources */,
 				CCA8BEF81CEC16030099AA75 /* AppDelegate.m in Sources */,
 				CCA34DA11CF7F72D00B65E48 /* MJPicturesView.m in Sources */,
+				CC0194931CFD2E54007A5410 /* MJDailyStory.m in Sources */,
 				CCA34DA71CF8199400B65E48 /* MJRefreshCycle.m in Sources */,
 				CCE50C5F1CF5A87D00EE545D /* MJTopicCell.m in Sources */,
+				CC93C3811CFD906C0047FEA8 /* MJHomeHeaderView.m in Sources */,
 				CCA8BEF51CEC16030099AA75 /* main.m in Sources */,
 				CC543E7B1CED697000EA5F6E /* MJNavigationController.m in Sources */,
 				CC3D2AEB1CEC38DD00F9085F /* MJLaunchController.m in Sources */,
 				CCEBA91C1CF56BD100D72DDE /* MJTopic.m in Sources */,
 				CCE50C5C1CF576C300EE545D /* MJExtensionConfig.m in Sources */,
 				CC38D7A61CF3FC3000546556 /* MJDrawerController.m in Sources */,
+				CC0194991CFD34EC007A5410 /* MJLatestStory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

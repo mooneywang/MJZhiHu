@@ -9,6 +9,9 @@
 #import "MJExtensionConfig.h"
 #import <MJExtension.h>
 #import "MJTopic.h"
+#import "MJStory.h"
+#import "MJDailyStory.h"
+#import "MJLatestStory.h"
 
 @implementation MJExtensionConfig
 
@@ -24,6 +27,26 @@
                  @"ID" : @"id",
                  @"desc" : @"description"
                  };
+    }];
+    
+    // MJStory中的ID属性对应着字典中的id
+    [MJStory mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+        return @{
+                 @"ID" : @"id",
+                 @"desc" : @"description"
+                 };
+    }];
+    
+    // MJDailyStory中的stories数组中存放MJStory模型
+    [MJDailyStory mj_setupObjectClassInArray:^NSDictionary *{
+        return @{
+                 @"stories" : @"MJStory"
+                 };
+    }];
+    
+    // MJLatestStory中的top_stories数组中存放MJStory模型
+    [MJLatestStory mj_setupObjectClassInArray:^NSDictionary *{
+        return @{@"top_stories" : @"MJStory"};
     }];
 }
 

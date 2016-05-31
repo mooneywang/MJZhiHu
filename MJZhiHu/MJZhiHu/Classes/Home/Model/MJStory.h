@@ -16,5 +16,6 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *image;
 @property (nonatomic, strong) NSArray *images;
+@property (nonatomic, assign) BOOL multipic;
 
 @end

@@ -11,6 +11,13 @@
 #import "MJDBManager.h"
 #import <Masonry.h>
 #import "MJRefreshCycle.h"
+#import <AFHTTPSessionManager.h>
+#import <MJExtension.h>
+#import "MJStory.h"
+#import "MJStoryCell.h"
+#import "MJDailyStory.h"
+#import "MJLatestStory.h"
+#import "MJHomeHeaderView.h"
 
 #define kLeftButtonW       (kTopBarH - kStatusBarH)
 #define kLeftButtonH       (kLeftButtonW)
@@ -18,7 +25,7 @@
 #define kRefreshCycleH     (kRefreshCycleW)
 #define kPicturesViewH     (220)
 
-@interface MJHomeController ()
+@interface MJHomeController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) UIView *headerView;
 @property (nonatomic, weak) UIView *picturesView;
@@ -26,6 +33,11 @@
 @property (nonatomic, weak) UIButton *leftButton;
 @property (nonatomic, weak) UILabel *titleLabel;
 @property (nonatomic, weak) MJRefreshCycle *refreshCycle;
+
+/** 循环滚动新闻（5条）*/
+@property (nonatomic, strong) NSArray *topStories;
+/** 新闻组*/
+@property (nonatomic, strong) NSMutableArray *storyGroup;
 
 @end
 
@@ -43,6 +55,7 @@
     [self setupLeftButton];
     [self setupTitleLabel];
     [self setupRefreshCycle];
+    [self loadData];
 }
 
 #pragma mark - private methods
@@ -67,6 +80,9 @@
     UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kPicturesViewH)];
     tableHeaderView.backgroundColor = [UIColor brownColor];
     tableView.tableHeaderView = tableHeaderView;
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    tableView.rowHeight = 80;
     [tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     _tableView = tableView;
 }
@@ -144,9 +160,109 @@
         }];
         // 改变导航条的透明度（0 ～ 1）
         self.headerView.alpha = yOffset / (kPicturesViewH - kTopBarH);
-        // 改变MJRefreshCycle的radius(0 ~ 2PI)
-        self.refreshCycle.angle = ABS(yOffset)/(kTopBarH) * M_PI * 2;
+        // 如果向下拉，改变MJRefreshCycle的radius(0 ~ 2PI)
+        if (yOffset <= 0) {
+            self.refreshCycle.angle = ABS(yOffset)/(kTopBarH) * M_PI * 2;
+        }
     }
+}
+
+- (void)loadData {
+    [self.refreshCycle beginRefresh];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:GET_LATEST_NEWS parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        MJLatestStory *latestStory = [MJLatestStory mj_objectWithKeyValues:responseObject];
+        _topStories = latestStory.top_stories;
+        if (_storyGroup.count > 0) {
+            // 清空数组
+            [self.storyGroup removeAllObjects];
+        }
+        [self.storyGroup insertObject:latestStory atIndex:0];
+        [self.tableView reloadData];
+        [self.refreshCycle endRefresh];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)loadMoreData {
+    // 取出最后一组数据的日期
+    MJDailyStory *dailyStory = [self.storyGroup lastObject];
+    NSString *dateStr = dailyStory.date;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:GET_LATEST_NEWS parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        MJLatestStory *latestStory = [MJLatestStory mj_objectWithKeyValues:responseObject];
+        _topStories = latestStory.top_stories;
+        if (_storyGroup.count > 0) {
+            // 清空数组
+            [self.storyGroup removeAllObjects];
+        }
+        [self.storyGroup insertObject:latestStory atIndex:0];
+        [self.tableView reloadData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+
+#pragma mark - ScrollView Delegate
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if(scrollView.contentOffset.y <= -kTopBarH){
+        [self loadData];
+    }
+}
+
+#pragma mark - Table View Data Source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.storyGroup.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    MJDailyStory *dailyStory = (MJDailyStory *)self.storyGroup[section];
+    return dailyStory.stories.count;
+}
+
+- (MJStoryCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MJStoryCell *cell = [MJStoryCell storyCellWithTableView:tableView];
+    // 获取数据模型
+    MJDailyStory *dailyStory = (MJDailyStory *)self.storyGroup[indexPath.section];
+    MJStory *story = dailyStory.stories[indexPath.row];
+    cell.story = story;
+    return cell;
+}
+
+#pragma mark - Table View Delegate
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    MJHomeHeaderView *headerView = [MJHomeHeaderView headerViewWithTableView:tableView];
+    MJDailyStory *dailyStory = (MJDailyStory *)self.storyGroup[section];
+    headerView.date = dailyStory.date;
+    return section ? headerView : nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return section ? 36 : CGFLOAT_MIN;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    // 当显示最后一组的组头的时候要加载下一组
+    if (section == self.storyGroup.count - 1) {
+        [self loadMoreData];
+    }
+}
+
+#pragma mark - getter & setter
+
+- (NSMutableArray *)storyGroup {
+    if (!_storyGroup) {
+        _storyGroup = [NSMutableArray array];
+    }
+    return _storyGroup;
 }
 
 @end

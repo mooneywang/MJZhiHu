@@ -78,7 +78,7 @@
 
 - (void)showLeftDrawerWithAnimate:(BOOL)animate {
     _isOpen = YES;
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         _centerController.view.frame = CGRectMake(_leftDrawerWidth, 0, kScreenW, kScreenH);
         _leftDrawerController.view.frame = CGRectMake(0, 0, _leftDrawerWidth, kScreenH);
     }];
@@ -86,7 +86,7 @@
 
 - (void)closeLeftDrawerWithAnimate:(BOOL)animate {
     _isOpen = NO;
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         _centerController.view.frame = CGRectMake(0, 0, kScreenW, kScreenH);
         _leftDrawerController.view.frame = CGRectMake(- _leftDrawerWidth, 0, _leftDrawerWidth, kScreenH);
     }];

@@ -12,4 +12,8 @@
 
 @property (nonatomic, assign) CGFloat angle;
 
+- (void)beginRefresh;
+
+- (void)endRefresh;
+
 @end

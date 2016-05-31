@@ -8,7 +8,33 @@
 
 #import "MJRefreshCycle.h"
 
+@interface MJRefreshCycle ()
+
+@property (nonatomic, weak) UIActivityIndicatorView *indicatorView;
+
+@end
+
 @implementation MJRefreshCycle
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self setupIndicator];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setupIndicator];
+    }
+    return self;
+}
+
+- (void)setupIndicator {
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [self addSubview:indicatorView];
+    _indicatorView = indicatorView;
+}
 
 - (void)drawRect:(CGRect)rect {
     // 设置圆心
@@ -37,6 +63,14 @@
 - (void)setAngle:(CGFloat)angle {
     _angle = angle;
     [self setNeedsDisplay];
+}
+
+- (void)beginRefresh {
+    [_indicatorView startAnimating];
+}
+
+- (void)endRefresh {
+    [_indicatorView stopAnimating];
 }
 
 @end
