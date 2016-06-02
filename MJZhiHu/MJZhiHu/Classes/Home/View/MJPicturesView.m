@@ -123,7 +123,7 @@
 
 - (void)nextImage {
     NSLog(@"nextImage");
-    [_scrollView setContentOffset:CGPointMake(kScreenW * 2, 0) animated:YES];
+    
 }
 
 #pragma mark - UIScrollViewDelegate
