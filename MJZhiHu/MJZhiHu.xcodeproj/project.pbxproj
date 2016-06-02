@@ -10,6 +10,7 @@
 		6EBEA04737740C9A03E1A5E0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F99DA8DC08F78505384D2F4D /* libPods.a */; };
 		CC0194931CFD2E54007A5410 /* MJDailyStory.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0194921CFD2E54007A5410 /* MJDailyStory.m */; };
 		CC0194991CFD34EC007A5410 /* MJLatestStory.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0194981CFD34EC007A5410 /* MJLatestStory.m */; };
+		CC34A4D51CFE80A400640345 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC34A4D41CFE80A400640345 /* NSDate+Extension.m */; };
 		CC38D7A61CF3FC3000546556 /* MJDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC38D7A51CF3FC3000546556 /* MJDrawerController.m */; };
 		CC3D2AEB1CEC38DD00F9085F /* MJLaunchController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3D2AE91CEC38DD00F9085F /* MJLaunchController.m */; };
 		CC3D2AEC1CEC38DD00F9085F /* MJLaunchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC3D2AEA1CEC38DD00F9085F /* MJLaunchController.xib */; };
@@ -59,6 +60,8 @@
 		CC0194921CFD2E54007A5410 /* MJDailyStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDailyStory.m; sourceTree = "<group>"; };
 		CC0194971CFD34EC007A5410 /* MJLatestStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJLatestStory.h; sourceTree = "<group>"; };
 		CC0194981CFD34EC007A5410 /* MJLatestStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJLatestStory.m; sourceTree = "<group>"; };
+		CC34A4D31CFE80A400640345 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		CC34A4D41CFE80A400640345 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		CC38D7A41CF3FC3000546556 /* MJDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDrawerController.h; sourceTree = "<group>"; };
 		CC38D7A51CF3FC3000546556 /* MJDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDrawerController.m; sourceTree = "<group>"; };
 		CC3D2AE81CEC38DD00F9085F /* MJLaunchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJLaunchController.h; sourceTree = "<group>"; };
@@ -151,6 +154,15 @@
 				1F085EC7373D39AB0817E399 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CC34A4D21CFE806A00640345 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CC34A4D31CFE80A400640345 /* NSDate+Extension.h */,
+				CC34A4D41CFE80A400640345 /* NSDate+Extension.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		CC3D2AE51CEC38B200F9085F /* Controller */ = {
@@ -377,6 +389,7 @@
 		CCE5FD091CEC341F00C3EB6C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CC34A4D21CFE806A00640345 /* Category */,
 				CC3D2AF11CEC443500F9085F /* Tool */,
 				CCE5FD0A1CEC341F00C3EB6C /* Launch */,
 				CC3D2AF21CEC4A3B00F9085F /* Main */,
@@ -596,6 +609,7 @@
 				CC543E7B1CED697000EA5F6E /* MJNavigationController.m in Sources */,
 				CC3D2AEB1CEC38DD00F9085F /* MJLaunchController.m in Sources */,
 				CCEBA91C1CF56BD100D72DDE /* MJTopic.m in Sources */,
+				CC34A4D51CFE80A400640345 /* NSDate+Extension.m in Sources */,
 				CCE50C5C1CF576C300EE545D /* MJExtensionConfig.m in Sources */,
 				CC38D7A61CF3FC3000546556 /* MJDrawerController.m in Sources */,
 				CC0194991CFD34EC007A5410 /* MJLatestStory.m in Sources */,

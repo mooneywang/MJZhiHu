@@ -18,6 +18,9 @@
 #import "MJDailyStory.h"
 #import "MJLatestStory.h"
 #import "MJHomeHeaderView.h"
+#import "NSDate+Extension.h"
+#import <FrameAccessor.h>
+#import "MJPicturesView.h"
 
 #define kLeftButtonW       (kTopBarH - kStatusBarH)
 #define kLeftButtonH       (kLeftButtonW)
@@ -28,7 +31,7 @@
 @interface MJHomeController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) UIView *headerView;
-@property (nonatomic, weak) UIView *picturesView;
+@property (nonatomic, weak) MJPicturesView *picturesView;
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) UIButton *leftButton;
 @property (nonatomic, weak) UILabel *titleLabel;
@@ -47,6 +50,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self setupNavigationBar];
     [self setupTableView];
@@ -72,13 +76,13 @@
     UITableView *tableView = [[UITableView alloc] init];
     [self.view addSubview:tableView];
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top);
+        make.top.equalTo(self.view.mas_top).offset(20);
         make.leading.equalTo(self.view.mas_leading);
         make.trailing.equalTo(self.view.mas_trailing);
         make.bottom.equalTo(self.view.mas_bottom);
     }];
-    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kPicturesViewH)];
-    tableHeaderView.backgroundColor = [UIColor brownColor];
+    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kPicturesViewH - 20)];
+    tableHeaderView.backgroundColor = [UIColor whiteColor];
     tableView.tableHeaderView = tableHeaderView;
     tableView.dataSource = self;
     tableView.delegate = self;
@@ -88,8 +92,7 @@
 }
 
 - (void)setupPicturesView {
-    UIView *picturesView = [[UIView alloc] init];
-    picturesView.backgroundColor = [UIColor redColor];
+    MJPicturesView *picturesView = [[MJPicturesView alloc] init];
     [self.view addSubview:picturesView];
     [picturesView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
@@ -173,6 +176,7 @@
     [manager GET:GET_LATEST_NEWS parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         MJLatestStory *latestStory = [MJLatestStory mj_objectWithKeyValues:responseObject];
         _topStories = latestStory.top_stories;
+        self.picturesView.topStories = _topStories;
         if (_storyGroup.count > 0) {
             // 清空数组
             [self.storyGroup removeAllObjects];
@@ -186,18 +190,13 @@
 }
 
 - (void)loadMoreData {
-    // 取出最后一组数据的日期
+    // 取出最后一组数据的日期拼接url
     MJDailyStory *dailyStory = [self.storyGroup lastObject];
-    NSString *dateStr = dailyStory.date;
+    NSString *dailyUrl = [NSString stringWithFormat:GET_DAILY_NEWS,dailyStory.date];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:GET_LATEST_NEWS parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        MJLatestStory *latestStory = [MJLatestStory mj_objectWithKeyValues:responseObject];
-        _topStories = latestStory.top_stories;
-        if (_storyGroup.count > 0) {
-            // 清空数组
-            [self.storyGroup removeAllObjects];
-        }
-        [self.storyGroup insertObject:latestStory atIndex:0];
+    [manager GET:dailyUrl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        MJDailyStory *dailyStory = [MJDailyStory mj_objectWithKeyValues:responseObject];
+        [self.storyGroup addObject:dailyStory];
         [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -250,9 +249,20 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    if (section == 0) {
+        self.headerView.height = kTopBarH;
+        self.titleLabel.alpha = 1;
+    }
     // 当显示最后一组的组头的时候要加载下一组
     if (section == self.storyGroup.count - 1) {
         [self loadMoreData];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
+    if (section == 0) {
+        self.headerView.height = 20;
+        self.titleLabel.alpha = 0;
     }
 }
 

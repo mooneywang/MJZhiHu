@@ -23,7 +23,7 @@
 #define GET_LAUNCH_IMAGE_URL    @"http://news-at.zhihu.com/api/4/start-image/720*1184"
 #define GET_TOPIC_URL           @"http://news-at.zhihu.com/api/4/themes"
 #define GET_LATEST_NEWS         @"http://news-at.zhihu.com/api/4/news/latest"
-#define GET_DAILY_NEWS          @""
+#define GET_DAILY_NEWS          @"http://news.at.zhihu.com/api/4/news/before/%@"
 
 #define MJColor(r,g,b,a)        [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 #define kNavBarThemeColor       MJColor(23, 144, 211, 1)

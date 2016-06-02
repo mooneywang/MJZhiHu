@@ -10,4 +10,6 @@
 
 @interface MJPicturesView : UIView
 
+@property (nonatomic, strong) NSArray *topStories;
+
 @end

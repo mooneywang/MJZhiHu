@@ -18,7 +18,7 @@
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
-        self.backgroundColor = kNavBarThemeColor;
+        self.contentView.backgroundColor = kNavBarThemeColor;
         [self setupSubView];
     }
     return self;
@@ -49,7 +49,12 @@
 
 - (void)setDate:(NSString *)date {
     _date = date;
-    self.dateLabel.text = date;
+    NSDateFormatter *dateF = [[NSDateFormatter alloc] init];
+    [dateF setDateFormat:@"yyyyMMdd"];
+    NSDate *pertDate = [dateF dateFromString:date];
+    [dateF setDateFormat:@"MM月dd日 EEEE"];
+    [dateF setLocale:[NSLocale localeWithLocaleIdentifier:@"zh_CN"]];
+    self.dateLabel.text = [dateF stringFromDate:pertDate];
 }
 
 @end
