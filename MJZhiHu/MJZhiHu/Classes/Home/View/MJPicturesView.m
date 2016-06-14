@@ -122,8 +122,6 @@
 }
 
 - (void)nextImage {
-    NSLog(@"nextImage");
-    
 }
 
 #pragma mark - UIScrollViewDelegate

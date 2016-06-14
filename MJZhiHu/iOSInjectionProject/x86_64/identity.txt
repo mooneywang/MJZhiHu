@@ -1,0 +1,2 @@
+/Users/yingying/Library/Developer/Xcode/DerivedData/MJZhiHu-appmnhdajbcfpraixbzeorurgrnu/Build/Products/Debug-iphonesimulator/MJZhiHu.app
+

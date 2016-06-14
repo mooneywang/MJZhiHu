@@ -8,6 +8,3 @@
 
 #import "MJGlobalConst.h"
 
-@implementation MJGlobalConst
-
-@end

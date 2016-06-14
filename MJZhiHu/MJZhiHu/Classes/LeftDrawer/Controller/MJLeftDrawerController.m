@@ -15,6 +15,8 @@
 
 @interface MJLeftDrawerController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *profileView;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 /** tableView的数据源 */
@@ -29,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTableView];
+    [self addGesture];
 }
 
 #pragma mark - private methods
@@ -36,6 +39,15 @@
 - (void)setupTableView {
     self.tableView.backgroundColor = kLeftDrawerThemeColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+- (void)addGesture {
+    UITapGestureRecognizer *tapG = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapProfileView)];
+    [_profileView addGestureRecognizer:tapG];
+}
+
+- (void)tapProfileView {
+    
 }
 
 #pragma mark - tableView data source
